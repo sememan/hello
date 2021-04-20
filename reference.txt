@@ -1,0 +1,6 @@
+https://circleci.com/blog/setting-up-continuous-integration-with-github/
+
+https://www.coursera.org/learn/setup-continuous-integration-ci-workflow-in-circleci/home/welcome
+https://rhyme.com/run/CFEDQRF9FQI1VPGQ7F1T
+
+
