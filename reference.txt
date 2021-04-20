@@ -4,5 +4,3 @@ https://www.coursera.org/learn/setup-continuous-integration-ci-workflow-in-circl
 https://rhyme.com/run/CFEDQRF9FQI1VPGQ7F1T
 
 
-fine
-
