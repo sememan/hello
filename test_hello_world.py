@@ -11,7 +11,7 @@ import unittest
 class TestHelloWorld(unittest.TestCase):
 
     def setUp(self):
-        self.app = hello_world.app.test_client()
+        self.app = hello.app.test_client()
         self.app.testing = True
 
     def test_status_code(self):
@@ -20,7 +20,7 @@ class TestHelloWorld(unittest.TestCase):
     
     def test_message(self):
         response = self.app.get('/')
-        message = hello_world.wrap_html('Hello DockerCon 2018!')
+        message = hello.wrap_html('Hello DockerCon 2018!')
         self.assertEqual(response.data, message)
 
 if __name__ == '__main__':
