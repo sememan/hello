@@ -35,6 +35,6 @@ jobs:
           command: |
             /usr/local/bin/python -m pip install --upgrade pip
             /usr/local/bin/python -m pip install pexpect
-            mkdir /root/.ssh && echo "$SSH_KEY" > /root/.ssh/id_rsa && chmod 0600 /root/.ssh/id_rsa
+            mkdir /home/k2/.ssh && echo "$SSH_KEY" > /home/k2/.ssh/id_rsa && chmod 0600 /home/k2/.ssh/id_rsa
             /usr/local/bin/python deploy.py 
             # ssh -o StrictHostKeyChecking=no root@hello.dpunks.org "/bin/bash ./deploy_app.sh ariv3ra/$IMAGE_NAME:$TAG"
