@@ -29,9 +29,11 @@ jobs:
       #       docker build -t sememan/$IMAGE_NAME:$TAG .
       #       echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
       #       docker push sememan/$IMAGE_NAME:$TAG
-      
+
       - run:
           name: Deploy app to Server 
           command: |
+            pip install --upgrade pip
+            mkdir /root/.ssh && echo "$SSH_KEY" > /root/.ssh/id_rsa && chmod 0600 /root/.ssh/id_rsa
             sshpass -p '123456' ssh k2@192.168.126.89
             # ssh -o StrictHostKeyChecking=no root@hello.dpunks.org "/bin/bash ./deploy_app.sh ariv3ra/$IMAGE_NAME:$TAG"
