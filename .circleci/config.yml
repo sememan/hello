@@ -29,6 +29,7 @@ jobs:
       #       docker build -t sememan/$IMAGE_NAME:$TAG .
       #       echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
       #       docker push sememan/$IMAGE_NAME:$TAG
+      
       - run:
           name: Deploy app to Server 
           command: |
