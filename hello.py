@@ -8,7 +8,7 @@ def wrap_html(message):
         <body>
             <div style='font-size:80px;'>
             <center>
-                <image width="531" src="https://files.realpython.com/media/The-Python-Print-Function_Watermarked.26066d64ad82.jpg">
+                <image height="458" width="720" src="https://secure.meetupstatic.com/photos/theme_body/9/a/8/e/full_7599566.jpeg">
                 <br>
                 {0}<br>
             </center>
@@ -19,7 +19,7 @@ def wrap_html(message):
 
 @app.route('/')
 def hello_world():
-    message = 'Hello Py!'
+    message = 'Hello DevOps DC Meetup!'
     html = wrap_html(message)
     return html
 
