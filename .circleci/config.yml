@@ -1,5 +1,6 @@
 version: 2
 jobs:
+  
   build:
     docker:
       - image: circleci/python:3.6
@@ -20,6 +21,9 @@ jobs:
           command: |
             . helloworld/bin/activate
             python test_hello_world.py
+  
+  deploy:
+    steps:
       - add_ssh_keys:
           fingerprints:
             - "ea:e5:57:46:5c:c2:8c:b4:fc:5d:68:91:e8:1b:0d:3e"
