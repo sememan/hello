@@ -23,7 +23,7 @@ jobs:
             python test_hello_world.py
       - add_ssh_keys:
           fingerprints:
-            - "ef:ac:fe:4f:cb:7a:3a:9c:63:f7:ad:81:06:ec:46:36"
+            - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcFG2sA9EiN+VTRltxAZVLJ1n42W54uG4wfOPMrEGbDwiP42UNBlDBpSqWVgOAu5sFAkRSwhuwUQa6QiJqShOq9lF6rM/KFTQBlcHqJbCvbj6/aMzcuFD2MhOQ/Ec3XuWtW715Jw62wRlDTn7un13ye5LMAbkEYsOSEpxzZgfduIBYxi54O6ZHhjYqLtVCd2wgYpRo0tZUOkzhNZBYDdFpviE0DAbp2BPT0ywk99PVNrRzDEoydTAyhSr5wKxXL1QcfBmeTaWyuPtmkJ8yNqxYhjDgVwCM0ANuQazqjwKCaUkuIoBU1IFmJC7mXcyYAKkfEfEKp+IOiBZo+p4WvgCp emanuele@elitebook"
       - run:
           name: Deploy app to Server 
           command: |
