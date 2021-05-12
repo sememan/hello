@@ -20,17 +20,6 @@ jobs:
           command: |
             . helloworld/bin/activate
             python test_hello_world.py
-      # - setup_remote_docker:
-      #     docker_layer_caching: true
-      # - run:
-      #     name: Build and push Docker image
-      #     command: |
-      #       . helloworld/bin/activate
-      #       pyinstaller -F hello_world.py
-      #       docker build -t sememan/$IMAGE_NAME:$TAG .
-      #       echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
-      #       docker push sememan/$IMAGE_NAME:$TAG
-
   deploy-job:
     steps:
       - add_ssh_keys:
