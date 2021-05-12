@@ -20,7 +20,7 @@ try:
 
     s = pxssh.pxssh()
 
-    s.login (hostname, username, ssh_key='/root/.ssh/id_rsa')
+    s.login (hostname, username, ssh_key='/home/pi/.ssh/id_rsa')
     # s.login (hostname, username, password)
     s.prompt() 
     print('\n # login:\n', str(s))
