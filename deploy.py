@@ -6,8 +6,8 @@ from pexpect import pxssh
 
 
 server = {
-    "host": "192.168.126.89",
-    "user": "k2"
+    "host": "192.168.178.46",
+    "user": "pi"
 }
 
 
@@ -16,7 +16,7 @@ try:
     s = pxssh.pxssh()
     hostname = server['host']
     username = server['user']
-    s.login (hostname, username, ssh_key='/home/k2/.ssh/id_rsa')
+    s.login (hostname, username, ssh_key='/home/pi/.ssh/id_rsa')
     s.prompt() 
     print('\n # login:\n', str(s))
     print()
