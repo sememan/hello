@@ -1,32 +1,7 @@
 version: 2
 jobs:
-
-  build:
-    docker:
-      - image: circleci/python:3.6
+  deploy-job:
     steps:
-      - checkout
-      - run:
-          name: Setup VirtualEnv
-          command: |
-            # echo 'export TAG=0.1.${CIRCLE_BUILD_NUM}' >> $BASH_ENV
-            # echo 'export IMAGE_NAME=python-circleci-docker' >> $BASH_ENV 
-            virtualenv helloworld
-            . helloworld/bin/activate
-            python -m pip install --upgrade pip
-            pip install --no-cache-dir -r requirements.txt
-            # sudo apt-get install sshpass -y
-      - run:
-          name: Run Tests
-          command: |
-            . helloworld/bin/activate
-            python test_hello_world.py
       - add_ssh_keys:
           fingerprints:
-            - "ef:ac:fe:4f:cb:7a:3a:9c:63:f7:ad:81:06:ec:46:36"
-      - run:
-          name: Deploy app to Server 
-          command: |
-            mkdir /root/.ssh && echo "$SSH_KEY" > /root/.ssh/id_rsa && chmod 0600 /root/.ssh/id_rsa
-            python deploy.py 
-            # ssh -o StrictHostKeyChecking=no root@hello.dpunks.org "/bin/bash ./deploy_app.sh ariv3ra/$IMAGE_NAME:$TAG"
+            - "SO:ME:FIN:G:ER:PR:IN:T"
