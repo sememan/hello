@@ -28,5 +28,6 @@ jobs:
           name: Deploy app to Server 
           command: |
             # mkdir /home/pi/.ssh && echo "$SSH_KEY" > /home/pi/.ssh/id_rsa && chmod 0600 /home/pi/.ssh/id_rsa
-            python deploy.py 
+            # python deploy.py 
             # ssh -o StrictHostKeyChecking=no root@hello.dpunks.org "/bin/bash ./deploy_app.sh ariv3ra/$IMAGE_NAME:$TAG"
+            ssh -o StrictHostKeyChecking=no pi@192.168.178.46
