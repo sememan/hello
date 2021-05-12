@@ -1,28 +1,8 @@
 version: 2
-
-defaults: &defaults
-  working_directory: /home/pi/
-  # docker:
-  # build:
-  docker:
-    - image: circleci/python:3.6
-    # steps:
-    #   - checkout
-    #   - run:
-    #       name: Setup VirtualEnv
-    #       command: |
-    #         virtualenv helloworld
-    #         . helloworld/bin/activate
-    #         python -m pip install --upgrade pip
-    #         pip install --no-cache-dir -r requirements.txt
-    #   - run:
-    #       name: Run Tests
-    #       command: |
-    #         . helloworld/bin/activate
-    #         python test_hello_world.py
-
-run_feature_tests:
-    <<: *defaults
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6
     steps:
       - checkout
       - attach_workspace:
@@ -33,5 +13,5 @@ run_feature_tests:
       - run:
           name: Clone frontend repository
           command: >-
-            GIT_SSH_COMMAND='ssh -i /home/.ssh/id_rsa'
+            GIT_SSH_COMMAND='ssh -i /home/pi/.ssh/id_rsa'
             git clone git@github.com:sememan/hello.git /home/pi/
