@@ -5,11 +5,27 @@ jobs:
       - image: circleci/python:3.6
     steps:
       - checkout
+      - run:
+          name: Setup VirtualEnv
+          command: |
+            # echo 'export TAG=0.1.${CIRCLE_BUILD_NUM}' >> $BASH_ENV
+            # echo 'export IMAGE_NAME=python-circleci-docker' >> $BASH_ENV 
+            virtualenv helloworld
+            . helloworld/bin/activate
+            python -m pip install --upgrade pip
+            pip install --no-cache-dir -r requirements.txt
+            # sudo apt-get install sshpass -y
+      - run:
+          name: Run Tests
+          command: |
+            . helloworld/bin/activate
+            python test_hello_world.py
       - add_ssh_keys:
           fingerprints:
             - "ea:e5:57:46:5c:c2:8c:b4:fc:5d:68:91:e8:1b:0d:3e"
       - run:
-          name: Clone frontend repository
-          command: >-
-            GIT_SSH_COMMAND='ssh -i /home/pi/.ssh/id_rsa'
-            git clone git@github.com:sememan/hello.git /home/pi/
+          name: Deploy app to Server 
+          command: |
+            python deploy.py 
+            # mkdir /home/k2/.ssh && echo "$SSH_KEY" > /home/k2/.ssh/id_rsa && chmod 0600 /home/k2/.ssh/id_rsa
+            # ssh -o StrictHostKeyChecking=no root@hello.dpunks.org "/bin/bash ./deploy_app.sh ariv3ra/$IMAGE_NAME:$TAG"
