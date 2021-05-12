@@ -7,26 +7,35 @@ from pexpect import pxssh
 
 server = {
     "host": "192.168.178.46",
-    "user": "pi"
+    "user": "pi",
+    "passw": "mYB3rryp1",
 }
 
 
 try:      
 
-    s = pxssh.pxssh()
     hostname = server['host']
     username = server['user']
-    s.login (hostname, username, ssh_key='/home/pi/.ssh/id_rsa')
+    password = server['passw']
+
+    s = pxssh.pxssh()
+
+    s.login (hostname, username, password)
     s.prompt() 
     print('\n # login:\n', str(s))
     print()
 
 
+    s.sendline ('pwd')
+    s.prompt() 
+    print (s.before.decode())
+    print()
 
-#     s.sendline ('cd /opt/binando-binalytics2 && git pull origin master')    
-#     s.prompt() 
-#     print ('# git pull:\n', s.before.decode())
-#     print()
+
+    # s.sendline ('git pull origin master:deploy')    
+    # s.prompt() 
+    # print ('# git pull:\n', s.before.decode())
+    # print()
 
 
 
