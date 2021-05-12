@@ -21,7 +21,6 @@ jobs:
           command: |
             . helloworld/bin/activate
             python test_hello_world.py
-    steps:
       - add_ssh_keys:
           fingerprints:
             - "ef:ac:fe:4f:cb:7a:3a:9c:63:f7:ad:81:06:ec:46:36"
