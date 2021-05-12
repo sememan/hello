@@ -4,10 +4,6 @@ import os
 import pexpect 
 from pexpect import pxssh
 
-# Hostname:       k2de-linux
-# IP:             192.168.126.89
-# User:           k2
-# Pw:             123456
 
 server = {
     "host": "192.168.126.89",

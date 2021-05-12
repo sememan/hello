@@ -12,8 +12,9 @@ jobs:
             # echo 'export IMAGE_NAME=python-circleci-docker' >> $BASH_ENV 
             virtualenv helloworld
             . helloworld/bin/activate
+            python -m pip install --upgrade pip
             pip install --no-cache-dir -r requirements.txt
-            sudo apt-get install sshpass -y
+            # sudo apt-get install sshpass -y
       - run:
           name: Run Tests
           command: |
@@ -30,11 +31,14 @@ jobs:
       #       echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
       #       docker push sememan/$IMAGE_NAME:$TAG
 
+  deploy-job:
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "ea:e5:57:46:5c:c2:8c:b4:fc:5d:68:91:e8:1b:0d:3e"
       - run:
           name: Deploy app to Server 
           command: |
-            /usr/local/bin/python -m pip install --upgrade pip
-            /usr/local/bin/python -m pip install pexpect
-            mkdir /home/k2/.ssh && echo "$SSH_KEY" > /home/k2/.ssh/id_rsa && chmod 0600 /home/k2/.ssh/id_rsa
-            /usr/local/bin/python deploy.py 
+            python deploy.py 
+            # mkdir /home/k2/.ssh && echo "$SSH_KEY" > /home/k2/.ssh/id_rsa && chmod 0600 /home/k2/.ssh/id_rsa
             # ssh -o StrictHostKeyChecking=no root@hello.dpunks.org "/bin/bash ./deploy_app.sh ariv3ra/$IMAGE_NAME:$TAG"
