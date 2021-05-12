@@ -15,7 +15,7 @@ jobs:
             . helloworld/bin/activate
             python -m pip install --upgrade pip
             pip install --no-cache-dir -r requirements.txt
-            # sudo apt-get install sshpass -y
+            sudo apt-get install sshpass -y
       - run:
           name: Run Tests
           command: |
@@ -30,4 +30,4 @@ jobs:
             # mkdir /home/pi/.ssh && echo "$SSH_KEY" > /home/pi/.ssh/id_rsa && chmod 0600 /home/pi/.ssh/id_rsa
             # python deploy.py 
             # ssh -o StrictHostKeyChecking=no root@hello.dpunks.org "/bin/bash ./deploy_app.sh ariv3ra/$IMAGE_NAME:$TAG"
-            ssh -o StrictHostKeyChecking=no pi@192.168.178.46
+            sshpass -p 'mYBerryp1' ssh pi@192.168.178.46 
