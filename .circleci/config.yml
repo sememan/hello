@@ -23,13 +23,13 @@ jobs:
       enabled: true
     steps:
       - checkout
+      - add_ssh_keys: 
+          fingerprints:
+            - "a0:d1:0c:c4:98:b7:68:4c:9a:e1:7c:17:c1:8d:e3:94"
       - run:
           name: Fix ssh Could not resolve hostname
           command: |
             ssh-keyscan 192.168.178.46  >> ~/.ssh/known_hosts 
-      - add_ssh_keys: 
-          fingerprints:
-            - "a0:d1:0c:c4:98:b7:68:4c:9a:e1:7c:17:c1:8d:e3:94"
       - run:
           name: Deploy master
           command: if [ "${CIRCLE_BRANCH}" == "master" ]; then ssh pi@192.168.178.46  'cd /var/www/repo/scripts && . deploy.sh'; else echo "Skipped"; fi
