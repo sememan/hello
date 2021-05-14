@@ -40,7 +40,7 @@ jobs:
       - run:
           name: Deploy master
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then sshpass -p 'mYBerryp1' ssh pi@192.168.178.46; else echo "Skipped"; fi
+            sshpass -p 'mYBerryp1' ssh pi@192.168.178.46
 
 workflows:
   version: 2
