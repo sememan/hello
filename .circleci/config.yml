@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.6
+    working_directory: ~/repo
     steps:
       - checkout
       - run:
@@ -21,18 +22,24 @@ jobs:
   deploy:
     machine:
       enabled: true
+    working_directory: ~/repo
     steps:
       - checkout
       - add_ssh_keys: 
           fingerprints:
             - "a0:d1:0c:c4:98:b7:68:4c:9a:e1:7c:17:c1:8d:e3:94"
       - run:
+          name: Install sshpass
+          command: |
+            sudo apt-get update
+            sudo apt-get install sshpass -y
+      - run:
           name: Fix ssh
           command: |
             ssh-keyscan -H 192.168.178.46  >> ~/.ssh/known_hosts 
       - run:
           name: Deploy master
-          command: if [ "${CIRCLE_BRANCH}" == "master" ]; then ssh pi@192.168.178.46  'cd /var/www/repo/scripts && . deploy.sh'; else echo "Skipped"; fi
+          command: if [ "${CIRCLE_BRANCH}" == "master" ]; then sshpass -p 'mYBerryp1' ssh pi@192.168.178.46  'cd /var/www/repo/scripts && . deploy.sh'; else echo "Skipped"; fi
 
 workflows:
   version: 2
