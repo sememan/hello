@@ -10,7 +10,7 @@ jobs:
           name: Setup VirtualEnv
           command: |
             virtualenv helloworld
-            . helloworld/bin/activate
+            . hello/bin/activate
             python -m pip install --upgrade pip
             pip install --no-cache-dir -r requirements.txt
       - run:
