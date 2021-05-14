@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/php:7.1-apache-node-browsers
+      - image: circleci/python:3.6
 
     steps:
       - checkout
@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Run Tests
           command: |
-            . helloworld/bin/activate
+            . hello/bin/activate
             python test_hello_world.py
 
   deploy:
