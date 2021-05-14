@@ -4,8 +4,6 @@ jobs:
     docker:
       - image: circleci/php:7.1-apache-node-browsers
 
-    working_directory: ~/repo
-
     steps:
       - checkout
 
@@ -17,7 +15,6 @@ jobs:
   deploy:
     machine:
       enabled: true
-    working_directory: ~/repo
     steps:
       - checkout
       - run:
