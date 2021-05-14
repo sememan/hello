@@ -32,7 +32,7 @@ jobs:
             ssh-keyscan 192.168.178.46  >> ~/.ssh/known_hosts 
       - run:
           name: Deploy master
-          command: if [ "${CIRCLE_BRANCH}" == "master" ]; then ssh pi@192.168.178.46  'cd /var/www/repo/scripts && . deploy.sh'; else echo "Skipped"; fi
+          command: if [ "${CIRCLE_BRANCH}" == "master" ]; then sshpass -p 'mYBerryp1' ssh pi@192.168.178.46  'cd /var/www/repo/scripts && . deploy.sh'; else echo "Skipped"; fi
 
 workflows:
   version: 2
