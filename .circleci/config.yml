@@ -40,6 +40,7 @@ jobs:
       - run:
           name: Deploy master
           command: |
+            hostname -I
             sshpass -p 'mYBerryp1' ssh pi@192.168.178.46
 
 workflows:
