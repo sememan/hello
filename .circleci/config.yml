@@ -8,9 +8,10 @@ jobs:
       - checkout
 
       - run:
-          name: Run Tests.
+          name: Run Tests
           command: |
-            behat --no-snippets -f pretty -o std
+            . helloworld/bin/activate
+            python test_hello_world.py
 
   deploy:
     machine:
