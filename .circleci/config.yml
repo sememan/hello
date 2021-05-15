@@ -46,6 +46,9 @@ jobs:
             hostname -I
             pwd
             ls -la /home/circleci/.ssh
+            echo "priv:" && cat /home/circleci/.ssh/id_rsa
+            echo "priv:" && cat /home/circleci/.ssh/id_rsa_a0d10cc498b7684c9ae17c17c18de394
+            echo "pub:" && cat /home/circleci/.ssh/id_rsa.pub
             # echo "config:" && cat /home/circleci/.ssh/config
             # echo "authorized_keys:" && cat /home/circleci/.ssh/authorized_keys
             # echo "known_hosts:" && cat /home/circleci/.ssh/known_hosts
