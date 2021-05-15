@@ -56,7 +56,7 @@ jobs:
             sudo -b openvpn --config /home/circleci/repo/vpn/e.semeraro@212.184.167.99.ovpn --auth-user-pass /home/circleci/repo/vpn/login.txt --daemon
             ssh k2@192.168.126.89 -vvv
             # sshpass -p 'mYBerryp1' ssh pi@192.168.178.46
-            
+
 
 workflows:
   version: 2
@@ -74,3 +74,8 @@ workflows:
             branches:
               only:
                 - master
+
+
+# ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCygH6c5V3Cm3Dv921UBjgbaJfABNQnO6wanuMLtLBbGkSjbKQHoh5VJgt0Q1mpO8+16Tlskk4NmSUmazhEM2Xpr4J2zs4sJiUdwA7W9TlJiTsKd4GueGgjpLESutc7x2wObIkZA/ETaX+z+O3KKmkqRoB1/rNhjarBy9n/sL07qTQqHDzGAveBjsTbS3lvEYH5u8S7UtrWWc5AUvPgkBjo1SxIZFJtYheLQoSCHBCTdwMKnY3zIW5eSddWVwRFDHJBZK/jfs+lXdUkabjvMJUwnc/+lc80+3XnypJFDSnUMiLjDbzKy6saweELoiGYOI6rAJlFv1pBeh0eqQkJydtqHdjcbZbTSinA5/Bt6PWgwH8nIs9AzeiOd5VJWcMtW3czILrJDXKfAIOumvA0si2F9bbIhVPVf/SzWk67GDGks+t2vIYBoiTwQIsRsMP2Y4ETxL751pL1WGbWStAl/hiRaJGaWLOCI/fMVRsB+4M+l1ODlvdpY2PJZGC6wg3+kFEGH9vBi63hZNwmRcEqe2NO0fkehZ42tAmb8H7yi7XPMJGutbjrBF32XwaABrUn27rdkoL8/ijH9LN8NlEKiVBngWvnXBLdPT0/Nh+ok/huC0Vy6IJaAGH1jkD+wc7djju+O0AZxxz+jYwWOIynWSXk42Lz2ePc5TDP2GJR8vdKwQ==
+# ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCygH6c5V3Cm3Dv921UBjgbaJfABNQnO6wanuMLtLBbGkSjbKQHoh5VJgt0Q1mpO8+16Tlskk4NmSUmazhEM2Xpr4J2zs4sJiUdwA7W9TlJiTsKd4GueGgjpLESutc7x2wObIkZA/ETaX+z+O3KKmkqRoB1/rNhjarBy9n/sL07qTQqHDzGAveBjsTbS3lvEYH5u8S7UtrWWc5AUvPgkBjo1SxIZFJtYheLQoSCHBCTdwMKnY3zIW5eSddWVwRFDHJBZK/jfs+lXdUkabjvMJUwnc/+lc80+3XnypJFDSnUMiLjDbzKy6saweELoiGYOI6rAJlFv1pBeh0eqQkJydtqHdjcbZbTSinA5/Bt6PWgwH8nIs9AzeiOd5VJWcMtW3czILrJDXKfAIOumvA0si2F9bbIhVPVf/SzWk67GDGks+t2vIYBoiTwQIsRsMP2Y4ETxL751pL1WGbWStAl/hiRaJGaWLOCI/fMVRsB+4M+l1ODlvdpY2PJZGC6wg3+kFEGH9vBi63hZNwmRcEqe2NO0fkehZ42tAmb8H7yi7XPMJGutbjrBF32XwaABrUn27rdkoL8/ijH9LN8NlEKiVBngWvnXBLdPT0/Nh+ok/huC0Vy6IJaAGH1jkD+wc7djju+O0AZxxz+jYwWOIynWSXk42Lz2ePc5TDP2GJR8vdKwQ==
+# ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcFG2sA9EiN+VTRltxAZVLJ1n42W54uG4wfOPMrEGbDwiP42UNBlDBpSqWVgOAu5sFAkRSwhuwUQa6QiJqShOq9lF6rM/KFTQBlcHqJbCvbj6/aMzcuFD2MhOQ/Ec3XuWtW715Jw62wRlDTn7un13ye5LMAbkEYsOSEpxzZgfduIBYxi54O6ZHhjYqLtVCd2wgYpRo0tZUOkzhNZBYDdFpviE0DAbp2BPT0ywk99PVNrRzDEoydTAyhSr5wKxXL1QcfBmeTaWyuPtmkJ8yNqxYhjDgVwCM0ANuQazqjwKCaUkuIoBU1IFmJC7mXcyYAKkfEfEKp+IOiBZo+p4WvgCp emanuele@elitebook
