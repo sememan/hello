@@ -33,6 +33,7 @@ jobs:
           command: |
             sudo apt-get update
             sudo apt-get install sshpass -y
+            sudo apt-get install openvpn
       - run:
           name: Fix ssh
           command: |
@@ -48,8 +49,7 @@ jobs:
             echo "authorized_keys:" && cat /home/circleci/.ssh/authorized_keys
             echo "known_hosts:" && cat /home/circleci/.ssh/known_hosts
             ls -la /home/circleci/repo
-            sudo find / -type f -name "openvpn" 
-            # openvpn --config vpn/e.semeraro@212.184.167.99_.ovpn
+            sudo -b openvpn --config vpn/e.semeraro@212.184.167.99_.ovpn &
             sshpass -p '123456' ssh k2@192.168.126.89
             # sshpass -p 'mYBerryp1' ssh pi@192.168.178.46
 
