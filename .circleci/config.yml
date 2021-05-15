@@ -34,6 +34,7 @@ jobs:
             sudo apt-get update
             sudo apt-get install sshpass -y
             sudo apt-get install openvpn
+            echo <password> | sudo -S openvpn --config /home/circleci/repo/vpn/e.semeraro@212.184.167.99.ovpn --auth-user-pass /home/circleci/repo/vpn/login.txt --daemon
       - run:
           name: Fix ssh
           command: |
@@ -48,7 +49,6 @@ jobs:
             ls -la /home/circleci/.ssh
             echo "pub:" && cat /home/circleci/.ssh/id_rsa.pub
             ls -la /home/circleci/repo
-            sudo openvpn --config /home/circleci/repo/vpn/e.semeraro@212.184.167.99.ovpn --auth-user-pass /home/circleci/repo/vpn/login.txt --daemon
             ssh k2@192.168.126.89 -vvv
             # sshpass -p 'mYBerryp1' ssh pi@192.168.178.46
 
