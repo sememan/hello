@@ -43,7 +43,7 @@ jobs:
             pwd
             hostname
             hostname -I
-            ls- la /home/.ssh
+            ls -la /home/.ssh
             cat /home/.ssh/known_hosts
             ls -la /home/circleci/repo
             # sshpass -p 'mYBerryp1' ssh pi@192.168.178.46
