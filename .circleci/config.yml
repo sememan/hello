@@ -44,11 +44,13 @@ jobs:
             hostname -I
             pwd
             ls -la /home/circleci/.ssh
+            echo "config:" && cat /home/circleci/.ssh/config
             echo "authorized_keys:" && cat /home/circleci/.ssh/authorized_keys
             echo "known_hosts:" && cat /home/circleci/.ssh/known_hosts
             ls -la /home/circleci/repo
-            # sshpass -p 'mYBerryp1' ssh pi@192.168.178.46
+            openvpn --config vpn/e.semeraro@212.184.167.99_.ovpn
             sshpass -p '123456' ssh k2@192.168.126.89
+            # sshpass -p 'mYBerryp1' ssh pi@192.168.178.46
 
 workflows:
   version: 2
