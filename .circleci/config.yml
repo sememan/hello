@@ -33,10 +33,10 @@ jobs:
           command: |
             sudo apt-get update
             sudo apt-get install sshpass -y
-      # - run:
-      #     name: Fix ssh
-      #     command: |
-      #       ssh-keyscan -H 192.168.178.46  >> ~/.ssh/known_hosts 
+      - run:
+          name: Fix ssh
+          command: |
+            ssh-keyscan -H 192.168.178.46  >> ~/.ssh/known_hosts 
       - run:
           name: Deploy master
           command: |
