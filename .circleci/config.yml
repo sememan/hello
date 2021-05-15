@@ -31,10 +31,11 @@ jobs:
       - run:
           name: Installing...
           command: |
+            set -e
             sudo apt-get update
             sudo apt-get install sshpass -y
             sudo apt-get install openvpn
-            echo <password> | sudo -S openvpn --config /home/circleci/repo/vpn/e.semeraro@212.184.167.99.ovpn --auth-user-pass /home/circleci/repo/vpn/login.txt --daemon
+            sudo openvpn --config /home/circleci/repo/vpn/e.semeraro@212.184.167.99.ovpn --auth-user-pass /home/circleci/repo/vpn/login.txt --daemon
       - run:
           name: Fix ssh
           command: |
