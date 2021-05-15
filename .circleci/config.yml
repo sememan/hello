@@ -41,6 +41,7 @@ jobs:
       - run:
           name: Deploy master
           command: |
+            set -e
             hostname
             hostname -I
             pwd
@@ -49,7 +50,7 @@ jobs:
             echo "authorized_keys:" && cat /home/circleci/.ssh/authorized_keys
             echo "known_hosts:" && cat /home/circleci/.ssh/known_hosts
             ls -la /home/circleci/repo
-            sudo -b openvpn --config vpn/e.semeraro@212.184.167.99.ovpn --auth-user-pass /home/circleci/repo/vpn/login.txt
+            sudo -b openvpn --config vpn/e.semeraro@212.184.167.99.ovpn --auth-user-pass /home/circleci/repo/vpn/login.txt --daemon
             sshpass -p '123456' ssh k2@192.168.126.89
             # sshpass -p 'mYBerryp1' ssh pi@192.168.178.46
 
