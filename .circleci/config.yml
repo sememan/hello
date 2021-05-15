@@ -40,12 +40,15 @@ jobs:
       - run:
           name: Deploy master
           command: |
+            hostname
+            hostname -I
             pwd
             ls -la /home/circleci/.ssh
+            cat /home/circleci/.ssh/authorized_keys
             cat /home/circleci/.ssh/known_hosts
             ls -la /home/circleci/repo
             # sshpass -p 'mYBerryp1' ssh pi@192.168.178.46
-            sshpass -vvv -p '123456' ssh k2@192.168.126.89
+            sshpass -p '123456' ssh k2@192.168.126.89
 
 workflows:
   version: 2
