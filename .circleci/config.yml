@@ -29,7 +29,7 @@ jobs:
           fingerprints:
             - "a0:d1:0c:c4:98:b7:68:4c:9a:e1:7c:17:c1:8d:e3:94"
       - run:
-          name: Install sshpass
+          name: Installing...
           command: |
             sudo apt-get update
             sudo apt-get install sshpass -y
