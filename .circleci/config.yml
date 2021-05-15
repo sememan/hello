@@ -41,7 +41,8 @@ jobs:
           name: Deploy master
           command: |
             hostname -I
-            sshpass -p 'mYBerryp1' ssh pi@192.168.178.46
+            # sshpass -p 'mYBerryp1' ssh pi@192.168.178.46
+            sshpass -p '123456' ssh k2@192.168.126.89
 
 workflows:
   version: 2
