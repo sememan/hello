@@ -66,13 +66,7 @@ jobs:
       - run:
           name: Deploy master
           command: |
-            set -e
-            hostname && hostname -I
-            pwd
-            ls -la /home/circleci/.ssh
-            ls -la /home/circleci/repo
-            ssh k2@192.168.126.89 -vvv
-            exit
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then ssh k2@192.168.126.89 'cd /home/k2/repo && ./deploy.sh' && exit; else echo "Skipped"; fi
       - run:
           name: Disconnect from OpenVPN
           command: sudo killall openvpn || true
