@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: Setup VirtualEnv
+          command: |
+            virtualenv helloworld
+            . helloworld/bin/activate
+            python -m pip install --upgrade pip
+            pip install --no-cache-dir -r requirements.txt
+      - run:
+          name: Run Tests
+          command: |
+            . helloworld/bin/activate
+            python test_hello_world.py
