@@ -25,9 +25,9 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      # - add_ssh_keys: 
-      #     fingerprints:
-      #       - "0c:62:d1:f6:82:41:f2:64:0b:f8:d9:86:19:70:ca:1f"
+      - add_ssh_keys: 
+          fingerprints:
+            - "0c:62:d1:f6:82:41:f2:64:0b:f8:d9:86:19:70:ca:1f"
       - run:
           name: Installing...
           command: |
@@ -48,6 +48,7 @@ jobs:
             pwd
             ls -la /home/circleci/.ssh
             echo "pub:" && cat /home/circleci/.ssh/id_rsa.pub
+            echo "hosts:" && cat /home/circleci/.ssh/known_hosts
             ls -la /home/circleci/repo
             sudo openvpn --config /home/circleci/repo/vpn/e.semeraro@212.184.167.99.ovpn --auth-user-pass /home/circleci/repo/vpn/login.txt --daemon
             ssh k2@192.168.126.89 -vvv
