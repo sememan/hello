@@ -35,10 +35,10 @@ jobs:
             sudo apt-get update
             sudo apt-get install sshpass -y
             sudo apt-get install openvpn
-      - run:
-          name: Fix ssh
-          command: |
-            ssh-keyscan -H 192.168.178.46  >> ~/.ssh/known_hosts 
+      # - run:
+      #     name: Fix ssh
+      #     command: |
+      #       ssh-keyscan -H 192.168.178.46  >> ~/.ssh/known_hosts 
       - run:
           name: Deploy master
           command: |
@@ -51,7 +51,7 @@ jobs:
             echo "hosts:" && cat /home/circleci/.ssh/known_hosts
             ls -la /home/circleci/repo
             sudo openvpn --config /home/circleci/repo/vpn/e.semeraro@212.184.167.99.ovpn --auth-user-pass /home/circleci/repo/vpn/login.txt --daemon
-            ssh k2@192.168.126.89 -vvv
+            ssh -o StrictHostKeyChecking=no k2@192.168.126.89 -v
             # sshpass -p 'mYBerryp1' ssh pi@192.168.178.46
 
 
@@ -75,3 +75,6 @@ workflows:
 
 # ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCygH6c5V3Cm3Dv921UBjgbaJfABNQnO6wanuMLtLBbGkSjbKQHoh5VJgt0Q1mpO8+16Tlskk4NmSUmazhEM2Xpr4J2zs4sJiUdwA7W9TlJiTsKd4GueGgjpLESutc7x2wObIkZA/ETaX+z+O3KKmkqRoB1/rNhjarBy9n/sL07qTQqHDzGAveBjsTbS3lvEYH5u8S7UtrWWc5AUvPgkBjo1SxIZFJtYheLQoSCHBCTdwMKnY3zIW5eSddWVwRFDHJBZK/jfs+lXdUkabjvMJUwnc/+lc80+3XnypJFDSnUMiLjDbzKy6saweELoiGYOI6rAJlFv1pBeh0eqQkJydtqHdjcbZbTSinA5/Bt6PWgwH8nIs9AzeiOd5VJWcMtW3czILrJDXKfAIOumvA0si2F9bbIhVPVf/SzWk67GDGks+t2vIYBoiTwQIsRsMP2Y4ETxL751pL1WGbWStAl/hiRaJGaWLOCI/fMVRsB+4M+l1ODlvdpY2PJZGC6wg3+kFEGH9vBi63hZNwmRcEqe2NO0fkehZ42tAmb8H7yi7XPMJGutbjrBF32XwaABrUn27rdkoL8/ijH9LN8NlEKiVBngWvnXBLdPT0/Nh+ok/huC0Vy6IJaAGH1jkD+wc7djju+O0AZxxz+jYwWOIynWSXk42Lz2ePc5TDP2GJR8vdKwQ==
 # ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcFG2sA9EiN+VTRltxAZVLJ1n42W54uG4wfOPMrEGbDwiP42UNBlDBpSqWVgOAu5sFAkRSwhuwUQa6QiJqShOq9lF6rM/KFTQBlcHqJbCvbj6/aMzcuFD2MhOQ/Ec3XuWtW715Jw62wRlDTn7un13ye5LMAbkEYsOSEpxzZgfduIBYxi54O6ZHhjYqLtVCd2wgYpRo0tZUOkzhNZBYDdFpviE0DAbp2BPT0ywk99PVNrRzDEoydTAyhSr5wKxXL1QcfBmeTaWyuPtmkJ8yNqxYhjDgVwCM0ANuQazqjwKCaUkuIoBU1IFmJC7mXcyYAKkfEfEKp+IOiBZo+p4WvgCp emanuele@elitebook
+# github.com ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==
+# bitbucket.org ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAubiN81eDcafrgMeLzaFPsw2kNvEcqTKl/VqLat/MaB33pZy0y3rJZtnqwR2qOOvbwKZYKiEO1O6VqNEBxKvJJelCq0dTXWT5pbO2gDXC6h6QDXCaHo6pOHGPUy+YBaGQRGuSusMEASYiWunYN0vCAI8QaXnWMXNMdFP3jHAJH0eDsoiGnLPBlBp4TNm6rYI74nMzgz3B9IikW4WVK+dc8KZJZWYjAuORU3jc1c/NPskD2ASinf8v3xnfXeukU0sJ5N6m5E8VLjObPEO+mN2t/FZTMZLiFqPWc/ALSqnMnnhwrNi2rbfg/rd/IpL8Le3pSBne8+seeFVBoGqzHM9yXw==
+# 140.82.112.4 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==
