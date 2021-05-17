@@ -25,15 +25,13 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - add_ssh_keys: 
-          fingerprints:
-            - "0c:62:d1:f6:82:41:f2:64:0b:f8:d9:86:19:70:ca:1f"
+      # - add_ssh_keys: 
+      #     fingerprints:
+      #       - "0c:62:d1:f6:82:41:f2:64:0b:f8:d9:86:19:70:ca:1f"
       - run:
-          name: Install sshpass and OpenVPN
+          name: Install OpenVPN
           command: |
-            set -e
             sudo apt-get update
-            sudo apt-get install sshpass -y
             sudo apt-get install openvpn -y
       - run:
           name: Check IP before VPN connection
@@ -65,10 +63,6 @@ jobs:
             done
             echo "VPN Connected"
             echo "Public IP is now $(curl checkip.amazonaws.com)"
-      # - run:
-      #     name: Fix ssh
-      #     command: |
-      #       ssh-keyscan -H 192.168.126.89  >> /home/circleci/.ssh/known_hosts 
       - run:
           name: Deploy master
           command: |
@@ -78,7 +72,7 @@ jobs:
             ls -la /home/circleci/.ssh
             ls -la /home/circleci/repo
             ssh k2@192.168.126.89 -vvv
-            # sshpass -p 'mYBerryp1' ssh pi@192.168.178.46
+            exit
       - run:
           name: Disconnect from OpenVPN
           command: sudo killall openvpn || true
