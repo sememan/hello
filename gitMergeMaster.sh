@@ -5,22 +5,26 @@ cd $REPO_DIR
 
 pwd
 
-git checkout master
-
-echo "pulling..."
-git pull origin master
 
 echo "Enter the branch you want to merge to master:"
 read branch
 
 echo "merging..."
+git checkout master
 git merge origin/"${branch}"
 
-echo "pushing..."
-git push origin master
-
-echo "deleting remotely..."
+echo "deleting the remote branch..."
 git push -d origin "${branch}"      # from remote
-
 # echo "deleting locally..."
 # git branch -d "${branch}"           # from local
+
+
+echo "--- Enter the push commit message"
+read message
+
+echo "pushing..."
+git add .
+git commit -m "${message}"
+git status
+git push -u origin master
+
