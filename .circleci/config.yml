@@ -63,7 +63,7 @@ jobs:
       - run:
           name: Deploy master
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then ssh k2@192.168.126.89 'cd /home/k2/repo && git pull origin master' && exit; else echo "Skipped"; fi
+            ssh k2@192.168.126.89 'cd /home/k2/repo && git pull origin master' && exit
       - run:
           name: Disconnect from OpenVPN
           command: sudo killall openvpn || true
