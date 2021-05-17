@@ -6,7 +6,7 @@ cd $REPO_DIR
 pwd
 
 
-echo "--- Enter the branch you want to merge to master:"
+echo "--- Enter the branch:"
 read branch
 
 echo "merging..."
@@ -19,12 +19,12 @@ git push -d origin "${branch}"      # from remote
 # git branch -d "${branch}"           # from local
 
 
-echo "--- Enter the commit message"
-read message
+# echo "--- Enter the commit message"
+# read message
 
-echo "pushing..."
-git add .
-git commit -m "${message}"
-git status
+# echo "pushing..."
+# git add .
+# git commit -m "${message}"
+# git status
 git push -u origin master
 
