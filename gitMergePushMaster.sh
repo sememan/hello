@@ -14,4 +14,4 @@ git merge origin/"${branch}"
 
 git push origin master
 
-git remote remove origin
+# git remote remove origin
