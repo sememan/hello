@@ -47,8 +47,11 @@ jobs:
           name: VPN Setup
           background: true
           command: |
-            echo $VPN_CLIENT_CONFIG | base64 --decode > /tmp/config.ovpn
-            printf "$VPN_USER\n$VPN_PASSWORD" > /tmp/vpn.login
+            # echo $VPN_CLIENT_CONFIG | base64 --decode > /tmp/config.ovpn
+            # printf "$VPN_USER\n$VPN_PASSWORD" > /tmp/vpn.login
+            cp /home/circleci/repo/vpn/e.semeraro@212.184.167.99.ovpn /tmp/config.ovpn
+            cp /home/circleci/repo/vpn/login.txt /tmp/vpn.login
+            ls -la /tmp/
             phone_home=$(netstat -an | grep ':22 .*ESTABLISHED' | head -n1 | awk '{ split($5, a, ":"); print a[1] }') echo $phone_home
             sudo openvpn --config /tmp/config.ovpn --auth-user-pass /tmp/vpn.login \
               --route $phone_home 255.255.255.255 net_gateway \
