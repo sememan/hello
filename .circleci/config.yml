@@ -71,6 +71,7 @@ jobs:
           name: Disconnect from OpenVPN
           command: sudo killall openvpn || true
           when: always
+          
 
 workflows:
   version: 2
