@@ -10,8 +10,13 @@ git pull origin master
 
 echo "--- Enter the branch you want to merge to master:"
 read branch
+
+echo "--- merging..."
 git merge origin/"${branch}"
 
+echo "--- pushing..."
 git push origin master
 
-# git remote remove origin
+echo "--- deleting..."
+git push -d origin "${branch}"      # from remote
+git branch -d "${branch}"           # from local
