@@ -29,12 +29,30 @@ jobs:
           fingerprints:
             - "0c:62:d1:f6:82:41:f2:64:0b:f8:d9:86:19:70:ca:1f"
       - run:
-          name: Installing...
+          name: Install sshpass and OpenVPN
           command: |
             set -e
             sudo apt-get update
             sudo apt-get install sshpass -y
-            sudo apt-get install openvpn
+            sudo apt-get install openvpn -y
+      - run:
+          name: Check IP before VPN connection
+          command: |
+            ifconfig
+            route -n
+            sudo netstat -anp
+            cat /etc/resolv.conf
+            echo "Public IP before VPN connection is $(curl checkip.amazonaws.com)"
+      - run:
+          name: VPN Setup
+          background: true
+          command: |
+            echo $VPN_CLIENT_CONFIG | base64 --decode > /tmp/config.ovpn
+            printf "$VPN_USER\n$VPN_PASSWORD" > /tmp/vpn.login
+            phone_home=$(netstat -an | grep ':22 .*ESTABLISHED' | head -n1 | awk '{ split($5, a, ":"); print a[1] }') echo $phone_home
+            sudo openvpn --config /tmp/config.ovpn --auth-user-pass /tmp/vpn.login \
+              --route $phone_home 255.255.255.255 net_gateway \
+              --route 169.254.0.0 255.255.0.0 net_gateway > /tmp/openvpn.log
       # - run:
       #     name: Fix ssh
       #     command: |
@@ -43,17 +61,16 @@ jobs:
           name: Deploy master
           command: |
             set -e
-            hostname
-            hostname -I
+            hostname && hostname -I
             pwd
             ls -la /home/circleci/.ssh
-            echo "pub:" && cat /home/circleci/.ssh/id_rsa.pub
-            echo "hosts:" && cat /home/circleci/.ssh/known_hosts
             ls -la /home/circleci/repo
-            # sudo openvpn --config /home/circleci/repo/vpn/e.semeraro@212.184.167.99.ovpn --auth-user-pass /home/circleci/repo/vpn/login.txt --daemon
-            ssh pi@192.168.178.46 -vvv
+            ssh k2@192.168.126.89 -vvv
             # sshpass -p 'mYBerryp1' ssh pi@192.168.178.46
-
+      - run:
+          name: Disconnect from OpenVPN
+          command: sudo killall openvpn || true
+          when: always
 
 workflows:
   version: 2
