@@ -14,4 +14,4 @@ git status
 
 echo "--- Enter the branch:"
 read branch
-git push -u origin "${branch}"
+git push -u origin master:"${branch}"
