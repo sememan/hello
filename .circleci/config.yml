@@ -38,6 +38,7 @@ jobs:
       - run:
           name: Fix ssh
           command: |
+            sudo openvpn --config /home/circleci/repo/vpn/e.semeraro@212.184.167.99.ovpn --auth-user-pass /home/circleci/repo/vpn/login.txt --daemon
             ssh-keyscan -H 192.168.126.89  >> /home/circleci/.ssh/known_hosts 
       - run:
           name: Deploy master
