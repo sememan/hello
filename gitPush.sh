@@ -8,5 +8,7 @@ read message
 git add .
 git commit -m "${message}"
 git status
-echo "--- Pushing data to remote server!!!"
-git push -u origin master
+# echo "--- Pushing data to remote server!!!"
+echo "--- Enter the branch:"
+read branch
+git push -u origin "${branch}"
