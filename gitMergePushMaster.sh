@@ -13,3 +13,5 @@ read branch
 git merge origin/"${branch}"
 
 git push origin master
+
+git remote remove origin
