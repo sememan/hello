@@ -13,18 +13,11 @@ echo "merging..."
 git checkout master
 git merge origin/"${branch}"
 
-echo "deleting the remote branch..."
+echo "deleting..."
 git push -d origin "${branch}"      # from remote
 # echo "deleting locally..."
 # git branch -d "${branch}"           # from local
 
-
-# echo "--- Enter the commit message"
-# read message
-
-# echo "pushing..."
-# git add .
-# git commit -m "${message}"
-# git status
+echo "pushing..."
 git push -u origin master
 
