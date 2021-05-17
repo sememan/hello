@@ -19,12 +19,12 @@ git push -d origin "${branch}"      # from remote
 # git branch -d "${branch}"           # from local
 
 
-echo "--- Enter the push commit message"
-read message
+# echo "--- Enter the push commit message"
+# read message
 
-echo "pushing..."
-git add .
-git commit -m "${message}"
-git status
-git push -u origin master
+# echo "pushing..."
+# git add .
+# git commit -m "${message}"
+# git status
+# git push -u origin master
 
