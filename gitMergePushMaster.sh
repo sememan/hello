@@ -8,8 +8,8 @@ pwd
 git checkout master
 git pull origin master
 
-echo "--- Enter the branch:"
+echo "--- Enter the branch you want to merge to master:"
 read branch
-git merge "${branch}"
+git merge origin/"${branch}"
 
 git push origin master

@@ -12,6 +12,6 @@ git add .
 git commit -m "${message}"
 git status
 
-echo "--- Enter the branch:"
+echo "--- Enter the branch you want to push to:"
 read branch
 git push -u origin master:"${branch}"
